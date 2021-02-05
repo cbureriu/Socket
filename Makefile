@@ -1,28 +1,20 @@
-# Makefile for the socket programming example
-#
+server_objects = Socket.o example_server.o
+client_objects = Socket.o example_client.o
 
-#simple_server_objects = ServerSocket.o Socket.o simple_server_main.o
-simple_server_objects = Socket.o simple_server_main.o
+all : server client
 
-#simple_client_objects = ClientSocket.o Socket.o simple_client_main.o
-simple_client_objects = Socket.o simple_client_main.o
-
-all : simple_server simple_client
-
-simple_server: $(simple_server_objects)
-	g++ -o simple_server $(simple_server_objects)
+server: $(server_objects)
+	g++ -o server $(server_objects)
 
 
-simple_client: $(simple_client_objects)
-	g++ -o simple_client $(simple_client_objects)
+client: $(client_objects)
+	g++ -o client $(client_objects)
 
 
 Socket: Socket.cpp
-#ServerSocket: ServerSocket.cpp
-#ClientSocket: ClientSocket.cpp
-simple_server_main: simple_server_main.cpp
-simple_client_main: simple_client_main.cpp
+example_server: example_server.cpp
+example_client: example_client.cpp
 
 
 clean:
-	rm -f *.o simple_server simple_client
+	rm -f *.o server client

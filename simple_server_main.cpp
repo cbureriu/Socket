@@ -3,16 +3,16 @@
 #include <iostream>
 
 
-int main ( int argc, char *argv[]){
+int main(int argc, char *argv[]){
 	
 	std::cout << "server running....\n";
 
 	try{
-		ServerSocket server ( 30000 );
+		ServerSocket server(30000);
 		
 		while(true){
 			ServerSocket new_sock;
-			server.accept ( new_sock );
+			server.accept(new_sock);
 
 		try{
 		  while(true){
@@ -21,11 +21,11 @@ int main ( int argc, char *argv[]){
 			new_sock << data;
 			}
 		}
-		catch ( SocketException& ) {}
+		catch(SocketException&){}
 
 		}
 	}
-	catch ( SocketException& e){
+	catch(SocketException& e){
 		std::cout << "Exception was caught:" << e.description() << "\nExiting.\n";
 	}
 
